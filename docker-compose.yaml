@@ -13,6 +13,7 @@ services:
     # link this service to database service
     links:
       - "database:db"
+      - "vcenter:vcsa"
     volumes:
       - './:/app'
 
@@ -23,3 +24,12 @@ services:
     image: mongo 
     ports:
       - "27018:27017"
+
+  # vcenter simulator
+  vcenter:
+    image: jakerobinson/vcsim
+    #image: nimmis/vcsim
+    ports:
+      - "8989:8989"
+      - "443:443"
+    command: "./vcsim -httptest.serve 0.0.0.0:443 -trace -esx -app 10"
