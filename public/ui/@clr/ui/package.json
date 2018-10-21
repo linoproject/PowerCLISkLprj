@@ -1,0 +1,53 @@
+{
+  "_from": "@clr/ui",
+  "_id": "@clr/ui@0.13.5",
+  "_inBundle": false,
+  "_integrity": "sha512-8USKrkbSkEEBHCZPd6vwIVqAOpTcNmLF1+fXzfbpifPzPR+yQ4wk3ki5L3uLK4HF7AG2IyZA+Aw0yMcVLVMmLQ==",
+  "_location": "/@clr/ui",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "@clr/ui",
+    "name": "@clr/ui",
+    "escapedName": "@clr%2fui",
+    "scope": "@clr",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/@clr/ui/-/ui-0.13.5.tgz",
+  "_shasum": "90d8b8d9e1bef5ca101aa56c97e253a483ecb65e",
+  "_spec": "@clr/ui",
+  "_where": "/home/jan/Linoproject_ui/ui",
+  "author": {
+    "name": "clarity"
+  },
+  "bugs": {
+    "url": "https://github.com/vmware/clarity/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "bootstrap": "4.0.0-alpha.5"
+  },
+  "deprecated": false,
+  "description": "CSS for Clarity",
+  "homepage": "https://vmware.github.io/clarity/",
+  "license": "MIT",
+  "name": "@clr/ui",
+  "optionalDependencies": {
+    "bootstrap": "4.0.0-alpha.5"
+  },
+  "peerDependencies": {
+    "@clr/icons": "0.13.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/vmware/clarity.git"
+  },
+  "version": "0.13.5"
+}

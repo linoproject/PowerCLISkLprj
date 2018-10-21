@@ -1,0 +1,49 @@
+{
+  "_from": "@clr/icons",
+  "_id": "@clr/icons@0.13.5",
+  "_inBundle": false,
+  "_integrity": "sha512-ecm+w7aSUZEpbTZTpQGOGy02k9kBYtYU3bqwy1TJ3tXBOg1dy7Lo1sachOR+OjM21R5QP8PL3cNvBtUBkw3zqw==",
+  "_location": "/@clr/icons",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "@clr/icons",
+    "name": "@clr/icons",
+    "escapedName": "@clr%2ficons",
+    "scope": "@clr",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/@clr/icons/-/icons-0.13.5.tgz",
+  "_shasum": "f27da9b9838e1d30faee8ef5000116835434ab32",
+  "_spec": "@clr/icons",
+  "_where": "/home/jan/Linoproject_ui/ui",
+  "author": {
+    "name": "clarity"
+  },
+  "bugs": {
+    "url": "https://github.com/vmware/clarity/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Custom Element Icons for Clarity",
+  "homepage": "https://vmware.github.io/clarity/",
+  "license": "MIT",
+  "main": "index.js",
+  "name": "@clr/icons",
+  "peerDependencies": {
+    "@webcomponents/custom-elements": "^1.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@git.eng.vmware.com/clarity.git"
+  },
+  "types": "index.d.ts",
+  "version": "0.13.5"
+}

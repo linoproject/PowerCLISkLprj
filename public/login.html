@@ -1,0 +1,83 @@
+<html lang="en">
+
+<head>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
+    <script src="ui/lib/jquery/jquery.js"></script> 
+    <script src="ui/lib/oop/oop.js"></script>
+    <!-- Start file -->
+    <script src="ui/lib/application/Application.js"></script> <!-- Key start file -->
+    <title>Clarity App Main</title>
+</head>
+
+<body>
+    <div style="display:none;">
+        <span class="x-lprjstartup">
+            <span class="x-lprjelm x-lprjvar-ApplicationName">Clarity FW example</span>
+
+            <span class="x-lprjelm x-lprjvar-DirApp">application</span>
+            <span class="x-lprjelm x-lprjvar-DirLib">ui/lib</span>
+            <span class="x-lprjelm x-lprjvar-DirWidget">ui/lib/application/widget</span>
+            <span class="x-lprjelm x-lprjvar-Debug">true</span>
+
+            <span class="x-lprjelm x-lprjvar-AuthPage">LOGIN</span>
+            <span class="x-lprjelm x-lprjvar-AuthCheckWS">/api/verifyToken</span>
+            
+            
+            <span class="x-lprjelm x-lprjvar-AuthLoginWS">api/login</span>
+            <span class="x-lprjelm x-lprjvar-AuthLoginOKRedirect">redirect-index.html</span>
+            
+            <span class="x-lprjelm x-lprjvar-ExternalLib">bootstrap/js/bootstrap.min.js</span>
+            <span class="x-lprjelm x-lprjvar-ExternalLib">bootstrap/plugin/loading.js</span>
+
+            <span class="x-lprjelm x-lprjvar-ExternalCss">ui/css/bootstrap.min.css</span>
+            <span class="x-lprjelm x-lprjvar-ExternalCss">ui/css/main.css</span>
+
+            <span class="x-lprjelm x-lprjvar-ExternalLib">../@webcomponents/custom-elements/custom-elements.min.js</span>
+            <span class="x-lprjelm x-lprjvar-ExternalLib">../@clr/icons/clr-icons.min.js</span>
+
+            <span class="x-lprjelm x-lprjvar-ExternalCss">../ui/@clr/ui/clr-ui.min.css</span>
+            <span class="x-lprjelm x-lprjvar-ExternalCss">../ui/@clr/icons/clr-icons.min.css</span>
+
+            
+            
+
+        </span>
+    </div>
+    <span class="x-lprjwdg-formlogin" id="wdgFormLogin1" style="display:none">
+        <span class="x-lprjelm x-lprjvar-user">wdgFormInputName</span>
+        <span class="x-lprjelm x-lprjvar-pass">wdgFormInputPassword</span>
+        <span class="x-lprjelm x-lprjvar-login">wdgFormBtnLogin</span>
+        <span class="x-lprjelm x-lprjvar-elementerror">lblLoginError</span>
+    </span>
+
+    <div class="login-wrapper">
+            <form class="login">
+                <section class="title">
+                    <h3 class="welcome">Welcome to</h3>
+                    <span _ngcontent-c0="" class="title"><span class="x-lprjwdg-varsubst x-lprjvar-ApplicationName" id="varAppName"></span></span>
+                    <h5 class="hint">Use your Company ID to sign in or create one now</h5>
+                </section>
+                <div class="login-group">
+                    <span class="x-lprjwdg-input " id="wdgFormInputName">
+                        <span class="x-lprjelm x-lprjvar-loginForm">true</span>
+                        <span class="x-lprjelm x-lprjvar-name">username</span>
+                        <span class="x-lprjelm x-lprjvar-placeholder">user@domain</span>
+                    </span>
+                    <span class="x-lprjwdg-input" id="wdgFormInputPassword">
+                        <span class="x-lprjelm x-lprjvar-loginForm">true</span>
+                        <span class="x-lprjelm x-lprjvar-type">password</span>
+                        <span class="x-lprjelm x-lprjvar-name">password</span>
+                        <span class="x-lprjelm x-lprjvar-passwordmd5">true</span>
+                    </span>
+                    <div class="error active" id="lblLoginError" style="display: none;"></div>
+                    <a class="x-lprjwdg-button x-lprjvar-action-wdgFormLogin1_fireAction btn btn-primary" id="wdgFormBtnLogin">Login</a>
+                    
+                    
+                    
+                </div>
+            </form>
+        </div>
+
+  
+</body>
