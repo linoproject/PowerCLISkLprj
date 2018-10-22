@@ -183,7 +183,7 @@ app['get'](properties.api + '/scriptexecutions/launch/:id', function(req, res){
 			bat.on('exit', (code) => {
 				
 				console.log("End of script" + iProcessRun);	
-				//console.log (sData);
+				console.log (sData);
 				
 				oExecutionData.State = "End";
 				db_PowerCLILaunch_db.ScriptExecution.findByIdAndUpdate(oExecutionData._id, oExecutionData, {'new': true}, function(err, obj){
@@ -194,6 +194,7 @@ app['get'](properties.api + '/scriptexecutions/launch/:id', function(req, res){
 					if (sData != ""){
 						// Finally store data
 						var oData = JSON.parse(sData);
+						
 						var oResData = JSON.parse(oExecutionData.ResultType);
 					
 						if (oResData.type == "list"){
@@ -234,7 +235,7 @@ app['get'](properties.api + '/scriptexecutionsadddefault', function(req, res){
 		if (count == 0){
 			var oScriptDefault = new db_PowerCLILaunch_db.ScriptExecution({
 				Filename: "test.ps1",
-				ResultType: "array",
+				ResultType: "{\"type\":\"list\",\"name\":\"vm\"}",
 				State: "Ready",
 			});
 			oScriptDefault.save(function(err) {

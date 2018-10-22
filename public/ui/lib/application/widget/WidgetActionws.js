@@ -58,7 +58,7 @@ var Application_WidgetActionws = Object.extend(Application_Widget, {
 		
 		if (this.oApplication.bDebug){
 			this.oApplication.writeDebugMsg("Init ActionsWS ");
-			console.log(this.oElement)
+			
 		}
 	},
 	
