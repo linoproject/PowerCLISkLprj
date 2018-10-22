@@ -108,6 +108,7 @@ app.get(properties.api + '/scriptexecutions/:id', function (req, res) {
 /**
  * ScriptExecutionService.list
  *   @description CRUD ACTION list
+ *   @returns ARRAY OF ScriptExecution
  *
  */
 app.get(properties.api + '/scriptexecutions', function (req, res) {
@@ -145,6 +146,17 @@ app.post(properties.api + '/scriptexecutions/:id', function (req, res) {
  *
  */
 app['get'](properties.api + '/scriptexecutions/launch/:id', function (req, res) {
+	res.send({});
+});
+		
+
+/**
+ * ScriptExecutionService.adddefault
+ *   @description Add default script
+ *   @returns Boolean
+ *
+ */
+app['get'](properties.api + '/scriptexecutionsadddefault', function (req, res) {
 	res.send({});
 });
 		

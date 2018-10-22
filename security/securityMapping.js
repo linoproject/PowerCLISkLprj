@@ -29,6 +29,7 @@ exports.authMapping = {
 	'GET - /api/results/findByScriptExecution/([^/])+$' : [],
 	'POST - /api/results/([^/])+$' : [],
 	'GET - /api/scriptexecutions/launch/([^/])+$' : [],
+	'GET - /api/scriptexecutionsadddefault$' : [],
 	'POST - /api/scriptexecutions/*$' : [],
 	'DELETE - /api/scriptexecutions/([^/])+$' : [],
 	'GET - /api/scriptexecutions/([^/])+$' : [],

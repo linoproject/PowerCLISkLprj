@@ -48,12 +48,16 @@ const swaggerDocument = YAML.load('./swagger.yaml');
  
 app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
+
+
+
 //START APPLICATION
 const server = http.Server(app);
 app.use(express.static(properties.publicPath)); 
  
 
 server.listen(properties.port, function() {
+   
     logger.info('Server started on port ' + properties.port);
     logger.info('Swagger docs at http://localhost:' + properties.port + "/api/docs");
 });

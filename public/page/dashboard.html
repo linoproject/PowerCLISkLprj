@@ -1,15 +1,34 @@
-<h2>Dashboard</h2>
 <span class="x-lprjwdg-actionws" id="wdgActionWs1">
-    <span class="x-lprjelm x-lprjvar-ActionWs1 x-lprjws x-wdgTarget-groupDataDashboard">staticservice/servicetest</span>
+    <span class="x-lprjelm x-lprjws x-lprjvar-ActionWs1 x-wdgTarget-groupDataDashboard x-lprjAutostart">staticservice/servicetest</span>
     <span class="x-lprjelm x-lprjvar-schedulerws">ActionWs1</span>
-	<span class="x-lprjelm x-lprjvar-scheduler">4</span>
-	<span class="x-lprjelm x-lprjvar-autostart">true</span>
+    <span class="x-lprjelm x-lprjvar-scheduler">10</span>
+</span>
+<span class="x-lprjwdg-actionws" id="wdgActionWsDefaultScript">
+    <span class="x-lprjelm x-lprjws x-lprjvar-ActionWsDefaultScript x-wdgTarget-wdgActionsWS_ResultWSDefault x-lprjForceUpdate">/api/scriptexecutionsadddefault</span>
+    <span class="x-lprjelm x-lprjws x-lprjvar-ActionWsDefaultScript2 x-wdgTarget-wdgActionsWS_ResultWSDefault">/api/scriptexecutionsadddefault</span>
+</span>
+<span class="x-lprjwdg-actionobj" id="wdgActionsWS">
+    <span class="x-lprjelm x-lprjvar-LaunchWSDefault">wdgLabelState.setLabel("Loding...")|wdgLabelState.setStatus("warning")|wdgLabelState.show()|wdgActionWsDefaultScript.fireAction("ActionWsDefaultScript")</span>
+    <span class="x-lprjelm x-lprjvar-ResultWSDefault">wdgLabelState.setLabel("Done")|wdgLabelState.setStatus("success")</span>
 </span>
 <span class="x-lprjwdg-groupobj" id="groupDataDashboard">
     <span class="x-lprjelm x-lprjobj">varTotalScript</span>
     <span class="x-lprjelm x-lprjobj">varTotalResults</span>
     <span class="x-lprjelm x-lprjobj">varExecutionScript</span>
 </span>
+
+<h2>Utility</h2>
+
+<a class="x-lprjwdg-button x-lprjvar-action-wdgActionsWS_LaunchWSDefault btn btn-primary" id="wdgFormBtnAddDefaultScript">Check and Add default script</a>
+<span class="x-lprjwdg-labels" id="wdgLabelState">
+    <span class="x-lprjelm x-lprjvar-label">Loading...</span>
+    <span class="x-lprjelm x-lprjvar-status">warning</span>
+    <span class="x-lprjelm x-lprjvar-hidden">true</span>
+</span>
+
+<h2>Dashboard</h2>
+
+
 <div class="row">
     <div class="col-lg-5 col-md-8 col-sm-12 col-xs-12">
         <div class="card">

@@ -31,12 +31,16 @@ var Application_Template = Object.extend(Object, {
 			console.log("No data");
 			return false
 		}
-		
+		sTemplate = $.trim(sTemplate);
 		if (aData.length == 0 || aData.length == undefined){
 			this._appendTemplate(oTargetElement, sTemplate, "", false);
 		}else{
-		
+			
+			
+			
+
 			for (i = 0; i < aData.length; i++){
+				
 				if (aData[i] != undefined){
 					//$(oTargetElement).append(sTemplate);
 					this._appendTemplate(oTargetElement, sTemplate, aData[i], false);
@@ -55,6 +59,16 @@ var Application_Template = Object.extend(Object, {
 	 */
 	_appendTemplate: function(oTargetElement, sTemplateHTML, oData, bPurgeUnavailable){
 		
+		
+		var aCondition = sTemplateHTML.match(/\{\{(.*)\}\}([\s\S]*?)\{\{end\}\}/g);
+		if (aCondition != undefined){
+			for (var i= 0; i < aCondition.length; i++){
+				var sCondition = aCondition[i].match(/\{\{(.*)\}\}/);
+				sCondition = sCondition[0].replace(/\{\{/,"").replace(/\}\}/,"");
+				eval ("if (oData."+sCondition+"){sTemplateHTML = sTemplateHTML.replace('{{"+sCondition+"}}','').replace('{{end}}','');}else{sTemplateHTML = sTemplateHTML.replace(aCondition[i],'');}");
+				
+			}
+		}
 		
 		aVarToSubst = sTemplateHTML.match(/##(.*?)##/g);
 		if (aVarToSubst != undefined ){

@@ -5,14 +5,33 @@
                 SCRIPT: ##Filename##
             </div>
             <div class="card-block">
+                <span class="x-lprjwdg-actionws" id="wdgActionWSScriptExecSingle##_id##">
+                    <span class="x-lprjelm x-lprjvar-ActionWs1 x-lprjws x-wdgTarget-wdgActionsWSScript##_id##_LaunchWSReturn x-lprjAuth">/api/scriptexecutions/launch/##_id##</span>
+                </span>
+                <span class="x-lprjwdg-actionobj" id="wdgActionsWSScript##_id##">
+                    <span class="x-lprjelm x-lprjvar-LaunchWSLaunch">wdgLabelStateScript##_id##.setLabel("Running...")|wdgLabelStateScript##_id##.setStatus("warning")|wdgActionWSScriptExecSingle##_id##.fireAction("ActionWs1")</span>
+                    <span class="x-lprjelm x-lprjvar-LaunchWSReturn">wdgLabelStateScript##_id##.setLabel("Done...")|wdgLabelStateScript##_id##.setStatus("success")|</span>
+                </span>                    
                 <div class="card-text">
                     Result Type: ##ResultType##<br>
-                    Status: ##State##
+                    State: 
+                    {{State=="Ready"}} 
+                    <span class="x-lprjwdg-labels" id="wdgLabelStateScript##_id##">
+                        <span class="x-lprjelm x-lprjvar-label">##State##</span>
+                        <span class="x-lprjelm x-lprjvar-status">success</span>
+                    </span>
+                    {{end}}
+                    {{State=="End"}} 
+                    <span class="x-lprjwdg-labels" id="wdgLabelStateScript##_id##">
+                        <span class="x-lprjelm x-lprjvar-label">##State##</span>
+                        <span class="x-lprjelm x-lprjvar-status">success</span>
+                    </span>
+                    {{end}}
                 </div>
             </div>
             <div class="card-footer">
-                <button class="btn btn-sm btn-link">ViewData</button>
-                <button class="btn btn-sm btn-link">Launch</button>
+                <button  class="x-lprjwdg-button x-lprjvar-action-wdgActionsWSScript##_id##_LaunchWSLaunch btn btn-sm btn-link" class="" id="btnLaunchScript##_id##">Launch</button>
+                <button class="btn btn-sm btn-link">View Data</button>
             </div>
         </div>
     </div>

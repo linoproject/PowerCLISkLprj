@@ -53,6 +53,10 @@ const properties = require('../../../properties.js');
  *	@param String id
  *	@returns Boolean
  *
+ * Service.adddefault
+ *	@description Add default script
+ *	@returns Boolean
+ *
  */
 // end documentation
 
@@ -181,7 +185,7 @@ app['get'](properties.api + '/scriptexecutions/launch/:id', function(req, res){
 				console.log("End of script" + iProcessRun);	
 				//console.log (sData);
 				
-				oExecutionData.State = "End-"+iProcessRun;
+				oExecutionData.State = "End";
 				db_PowerCLILaunch_db.ScriptExecution.findByIdAndUpdate(oExecutionData._id, oExecutionData, {'new': true}, function(err, obj){
 					if (err){
 						console.log(err);
@@ -221,4 +225,32 @@ app['get'](properties.api + '/scriptexecutions/launch/:id', function(req, res){
 	
 });
 
-			
+/**
+ * ScriptExecutionService.AddDefault
+ *
+ */
+app['get'](properties.api + '/scriptexecutionsadddefault', function(req, res){
+	db_PowerCLILaunch_db.ScriptExecution.findOne({Filename:"test.ps1"}).count().exec (function( err, count){
+		if (count == 0){
+			var oScriptDefault = new db_PowerCLILaunch_db.ScriptExecution({
+				Filename: "test.ps1",
+				ResultType: "array",
+				State: "Ready",
+			});
+			oScriptDefault.save(function(err) {
+				if (err){
+					console.log("Error" +err);
+					res.send(false);
+				}else{
+					console.log("Inser new default script");
+					res.send(true);
+				};
+				
+            });
+		}else{
+			console.log("Already present");
+			res.send(true);
+		}
+	});
+	
+});

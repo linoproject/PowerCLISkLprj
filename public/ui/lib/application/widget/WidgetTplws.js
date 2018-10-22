@@ -30,6 +30,7 @@ var Application_WidgetTplws = Object.extend(Application_Widget, {
 
 	oLibWidget: null,
 	
+	
 
 	constructor: function(oElement, oApplication){
 		
@@ -118,6 +119,9 @@ var Application_WidgetTplws = Object.extend(Application_Widget, {
 				this.oApplication.oLibClass.Template.fillTemplate(this.oTargetElement, this.sTemplate, oData);
 			}
 			
+			this.oLibWidget.getAllWidget(this.oApplication,this.sWidgetId,function(){
+			});
+
 			if (this.oApplication.bDebug){
 				this.oApplication.writeDebugMsg("Fire Event widget id "+this.sWidgetId);
 			}

@@ -183,15 +183,6 @@ paths:
         "200":
           description: OK
     
-  /scriptexecutionsadddefault:
-    get:
-      summary: Add default script
-      tags:
-        - ScriptExecution
-      responses:
-        "200":
-          description: OK
-    
   /scriptexecutions/:
     post:
       summary: CRUD ACTION create
@@ -225,6 +216,19 @@ paths:
                   type: integer
                 TimeUpdate:
                   type: integer
+    get:
+      summary: CRUD ACTION list
+      tags:
+        - ScriptExecution
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ScriptExecution"
     
   /scriptexecutions/{id}:
     delete:
