@@ -20,8 +20,11 @@ var Application_WidgetConditionobj = Object.extend(Application_Widget, {
 	oElement: null,
 	oApplication: null,
 	
+	sCheck: "",
+	sThen: "",
+	sElse: "",
+
 	
-	oActions : {},
 	
 	constructor: function(oElement, oApplication){
 		
@@ -40,21 +43,22 @@ var Application_WidgetConditionobj = Object.extend(Application_Widget, {
 		}
 		
 		// Catch action
-		this.oActions =  this.oApplication.oLibClass.Vars.getElementVar(this.oElement);
+		oConditions =  this.oApplication.oLibClass.Vars.getElementVar(this.oElement);
+		
+		this.sCheck = oConditions.check;
+		this.sThen = oConditions.then
+		this.sElse = oConditions.else
 		
 		oCallback();
 	},
 	
 	
-	fireAction: function(sWidgetSubAction){
-		
-		
+	fireAction: function(oData){
 		
 		if (this.oApplication.bDebug){
 			this.oApplication.writeDebugMsg("Fire condition object");
 		}
-		
-		
+		eval("if (oData."+this.sCheck+"){this.oApplication.oLibClass.Action.evalMultipleActions(this.oApplication,'"+this.sThen+"')}else{this.oApplication.oLibClass.Action.evalMultipleActions(this.oApplication,'"+this.sElse+"')}");
 		
 	}
 	

@@ -33,7 +33,7 @@ var Application_Template = Object.extend(Object, {
 		}
 		sTemplate = $.trim(sTemplate);
 		if (aData.length == 0 || aData.length == undefined){
-			this._appendTemplate(oTargetElement, sTemplate, "", false);
+			this._appendTemplate(oTargetElement, sTemplate, "", true);
 		}else{
 			
 			
@@ -43,7 +43,7 @@ var Application_Template = Object.extend(Object, {
 				
 				if (aData[i] != undefined){
 					//$(oTargetElement).append(sTemplate);
-					this._appendTemplate(oTargetElement, sTemplate, aData[i], false);
+					this._appendTemplate(oTargetElement, sTemplate, aData[i], true);
 				}
 				
 			}
@@ -81,7 +81,8 @@ var Application_Template = Object.extend(Object, {
 						eval ("sTemplateHTML = sTemplateHTML.replace(/"+aVarToSubst[i]+"/g,oData."+sObjectString+" )")
 					}else{
 						if (bPurgeUnavailable){
-							sTemplateHTML = "";
+							
+							eval("sTemplateHTML = sTemplateHTML.replace(/"+aVarToSubst[i]+"/g,'')");
 						}
 					}
 					

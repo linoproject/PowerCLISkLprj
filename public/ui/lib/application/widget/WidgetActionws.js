@@ -104,10 +104,22 @@ var Application_WidgetActionws = Object.extend(Application_Widget, {
 			}else{
 				bAuth = false;
 			}
-		
+			var sUrl = $(aElements[i]).html()
+			//Check url contains path vars like http://url/{{var}}
+			var aVars = sUrl.match(/\{\{(.*)\}\}/);
+			if (aVars != undefined){
+				for (var k=0; k < aVars.length; k++){
+					sVar = aVars[k].replace("{{","").replace("}}","");
+					if (eval ("this.oApplication.oWidgets."+sVar)!= undefined){
+						var sVal = eval ("this.oApplication.oWidgets."+sVar+".getVar()");
+					}
+					sUrl = sUrl.replace("{{"+sVar+"}}",sVal);
+				}
+			}
+
 			this.aActions[i] = {
 				id: sId,
-				url: $(aElements[i]).html(),
+				url: sUrl,
 				target: this.oApplication.oLibClass.Vars.getWidgetVar(aElements[i], "x-wdgTarget-"),
 				bAutoexec: bAutoexec,
 				bForceUpdate:bForceUpdate,
@@ -116,7 +128,7 @@ var Application_WidgetActionws = Object.extend(Application_Widget, {
 
 			this.oAction[sId] = {
 				id: sId,
-				url: $(aElements[i]).html(),
+				url: sUrl,
 				target: this.oApplication.oLibClass.Vars.getWidgetVar(aElements[i], "x-wdgTarget-"),
 				bAutoexec: bAutoexec,
 				bForceUpdate:bForceUpdate,

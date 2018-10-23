@@ -6,18 +6,20 @@
             </div>
             <div class="card-block">
                 <span class="x-lprjwdg-actionws" id="wdgActionWSScriptExecSingle##_id##">
-                    <span class="x-lprjelm x-lprjvar-ActionWsLaunch x-lprjws x-wdgTarget-wdgActionsWSScript##_id##_LaunchWSLaunched x-lprjAuth">/api/scriptexecutions/launch/##_id##</span>
-                    <span class="x-lprjelm x-lprjvar-ActionWsState x-lprjws x-wdgTarget-wdgActionsWSScript##_id##_LaunchWSReturn x-lprjAuth">/api/scriptexecutions/##_id##</span>
+                    <span class="x-lprjelm x-lprjvar-ActionWsLaunch x-lprjws x-wdgTarget-wdgActionsWSScript##_id##_LaunchWSLaunched x-lprjAuth x-lprjForceUpdate">/api/scriptexecutions/launch/##_id##</span>
+                    <span class="x-lprjelm x-lprjvar-ActionWsState x-lprjws x-wdgTarget-ConditionState##_id## x-lprjAuth x-lprjForceUpdate">/api/scriptexecutions/##_id##</span>
                 </span>
                 <span class="x-lprjwdg-actionobj" id="wdgActionsWSScript##_id##">
                     <span class="x-lprjelm x-lprjvar-LaunchWSLaunch">wdgLabelStateScript##_id##.setLabel("Starting...")|wdgLabelStateScript##_id##.setStatus("warning")|wdgActionWSScriptExecSingle##_id##.fireAction("ActionWsLaunch")</span>
-                    <span class="x-lprjelm x-lprjvar-LaunchWSLaunched">wdgLabelStateScript##_id##.setLabel("Running...")|wdgLabelStateScript##_id##.setStatus("warning")</span>
-                    
-                </span>                    
+                    <span class="x-lprjelm x-lprjvar-LaunchWSLaunched">wdgLabelStateScript##_id##.setLabel("Running...")|wdgLabelStateScript##_id##.setStatus("warning")|wdgActionWSScriptExecSingle##_id##.fireAction("ActionWsState")</span>
+                </span>     
+                <span class="x-lprjwdg-actionobj" id="wdgActionsShowResults##_id##">
+                    <span class="x-lprjelm x-lprjvar-OpenResults">ResultId.setVar("##_id##")|area1.opendiv(2)</span>
+                </span>               
                 <span class="x-lprjwdg-conditionobj" id="ConditionState##_id##">
-                    <span class="x-lprjelm x-lprjvar-check">State == "Running"</span>
-                    <span class="x-lprjelm x-lprjvar-then"></span>
-                    <span class="x-lprjelm x-lprjvar-else"></span>
+                    <span class="x-lprjelm x-lprjvar-check">State == "End"</span>
+                    <span class="x-lprjelm x-lprjvar-then">wdgLabelStateScript##_id##.setLabel("End")|wdgLabelStateScript##_id##.setStatus("success")</span>
+                    <span class="x-lprjelm x-lprjvar-else">wdgLabelStateScript##_id##.setLabel("Running Again...")|wdgLabelStateScript##_id##.setStatus("warning")|sleep(20000)|wdgActionWSScriptExecSingle##_id##.fireAction("ActionWsState")</span>
                 </span>
                 <div class="card-text">
                     Result Type: ##ResultType##<br>
@@ -41,7 +43,7 @@
             <div class="card-footer">
                 <button  class="x-lprjwdg-button x-lprjvar-action-wdgActionsWSScript##_id##_LaunchWSLaunch btn btn-sm btn-link" class="" id="btnLaunchScript##_id##">Launch</button>
                 {{HasResults=="Data"}}
-                <button class="btn btn-sm btn-link">View Data</button>
+                <button class="x-lprjwdg-button x-lprjvar-action-wdgActionsShowResults##_id##_OpenResults btn btn-sm btn-link" id="mnuData##_id##">View Data</button>
                 {{end}}
                 {{HasResults=="Error"}}
                 <button class="btn btn-sm btn-link">View Errors</button>
