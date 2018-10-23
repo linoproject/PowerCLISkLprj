@@ -6,12 +6,19 @@
             </div>
             <div class="card-block">
                 <span class="x-lprjwdg-actionws" id="wdgActionWSScriptExecSingle##_id##">
-                    <span class="x-lprjelm x-lprjvar-ActionWs1 x-lprjws x-wdgTarget-wdgActionsWSScript##_id##_LaunchWSReturn x-lprjAuth">/api/scriptexecutions/launch/##_id##</span>
+                    <span class="x-lprjelm x-lprjvar-ActionWsLaunch x-lprjws x-wdgTarget-wdgActionsWSScript##_id##_LaunchWSLaunched x-lprjAuth">/api/scriptexecutions/launch/##_id##</span>
+                    <span class="x-lprjelm x-lprjvar-ActionWsState x-lprjws x-wdgTarget-wdgActionsWSScript##_id##_LaunchWSReturn x-lprjAuth">/api/scriptexecutions/##_id##</span>
                 </span>
                 <span class="x-lprjwdg-actionobj" id="wdgActionsWSScript##_id##">
-                    <span class="x-lprjelm x-lprjvar-LaunchWSLaunch">wdgLabelStateScript##_id##.setLabel("Running...")|wdgLabelStateScript##_id##.setStatus("warning")|wdgActionWSScriptExecSingle##_id##.fireAction("ActionWs1")</span>
-                    <span class="x-lprjelm x-lprjvar-LaunchWSReturn">wdgLabelStateScript##_id##.setLabel("Done...")|wdgLabelStateScript##_id##.setStatus("success")</span>
+                    <span class="x-lprjelm x-lprjvar-LaunchWSLaunch">wdgLabelStateScript##_id##.setLabel("Starting...")|wdgLabelStateScript##_id##.setStatus("warning")|wdgActionWSScriptExecSingle##_id##.fireAction("ActionWsLaunch")</span>
+                    <span class="x-lprjelm x-lprjvar-LaunchWSLaunched">wdgLabelStateScript##_id##.setLabel("Running...")|wdgLabelStateScript##_id##.setStatus("warning")</span>
+                    
                 </span>                    
+                <span class="x-lprjwdg-conditionobj" id="ConditionState##_id##">
+                    <span class="x-lprjelm x-lprjvar-check">State == "Running"</span>
+                    <span class="x-lprjelm x-lprjvar-then"></span>
+                    <span class="x-lprjelm x-lprjvar-else"></span>
+                </span>
                 <div class="card-text">
                     Result Type: ##ResultType##<br>
                     State: 
@@ -27,11 +34,19 @@
                         <span class="x-lprjelm x-lprjvar-status">success</span>
                     </span>
                     {{end}}
+                    <br>
+                    Results: ##HasResults##
                 </div>
             </div>
             <div class="card-footer">
                 <button  class="x-lprjwdg-button x-lprjvar-action-wdgActionsWSScript##_id##_LaunchWSLaunch btn btn-sm btn-link" class="" id="btnLaunchScript##_id##">Launch</button>
+                {{HasResults=="Data"}}
                 <button class="btn btn-sm btn-link">View Data</button>
+                {{end}}
+                {{HasResults=="Error"}}
+                <button class="btn btn-sm btn-link">View Errors</button>
+                {{end}}
+
             </div>
         </div>
     </div>
