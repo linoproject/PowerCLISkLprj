@@ -1,0 +1,36 @@
+Quick startup
+-------------
+
+1. Browse to http://<server_ip_fqdn>:3000/
+2. Login with user: user and password: pass
+3. Under Utility section, click "CHECK AND ADD DEFAULT SCRIPT" button (a default script will added once)
+4. CLick ScriptCenter in the Dx menu
+5. Under test.ps1 press "LAUNCH" button. 
+6. After execution just click under "VIEW DATA" to show the results
+
+Add new script using Swagger Api Docs
+-------------------------------------
+Note: the new script  is under develpement... in the meantime you can use Swagger API
+
+0. Open file swagger.yaml (under root application directory) and check in the following statament if the ip is correctly configured
+servers:
+  - url: http://<ip>:3000/api
+In case of change remember to restart nodejs (simply CTRL+C and npm start again)
+1. Upload your ps1 file under pcli directory 
+1. Browse to  http://<server_ip_fqdn>:3000/api/docs
+2. Under Secuirty POST /login, click Try it out keeping the defaults username and password (md5) and click on execute
+3. Copy in response body the token without "
+4. Click Autorize (near the top-left corner of the page) and past token in the vaule input field... and click Authorize, Done
+5. Under ScriptExecution POST /scriptexecution click Try it out and change the json in this way:
+{
+  "_id": "", // Leave blank
+  "Filename": "string", The filen ame
+  "HasResults": "", //Leave blank
+  "ResultType": "{\"type\":\"list\",\"name\":\"vm\"}", // Actually only list is supported... but you can change vm with your custom name depending on the script 
+  "State": "End", 
+  "TimeEnd": 0,
+  "TimeStart": 0,
+  "TimeUpdate": 0
+}
+
+Note: Dashboard is a dummy service... It will be replaced with a real service

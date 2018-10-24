@@ -64,7 +64,6 @@ var Application_WidgetArea = Object.extend(Application_Widget, {
 			this.iOpenArea = parseInt(sDefaultArea);
 		}
 		
-		
 	},
 	
 	/**
@@ -75,6 +74,9 @@ var Application_WidgetArea = Object.extend(Application_Widget, {
 	startWidget: function(oCallback){
 
 		//this.oApplication.aWidgetsAutostart.push(this.sWidgetId);
+
+		$(this.oElement).find(".x-div-area").hide();
+
 		this.bAutostart = true;
 		oCallback();
 	},

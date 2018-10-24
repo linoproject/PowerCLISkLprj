@@ -24,13 +24,15 @@ var Application_WidgetConditionobj = Object.extend(Application_Widget, {
 	sThen: "",
 	sElse: "",
 
+	oData: null,
+
 	
 	
 	constructor: function(oElement, oApplication){
 		
 		this.oElement = oElement;
 		this.oApplication = oApplication;
-		
+		this.oData = null;
 		if (this.oApplication.bDebug){
 			this.oApplication.writeDebugMsg("Init Condition obj");
 		}
@@ -54,6 +56,8 @@ var Application_WidgetConditionobj = Object.extend(Application_Widget, {
 	
 	
 	fireAction: function(oData){
+		
+		this.oData = oData;
 		
 		if (this.oApplication.bDebug){
 			this.oApplication.writeDebugMsg("Fire condition object");

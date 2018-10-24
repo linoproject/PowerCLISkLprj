@@ -1,8 +1,8 @@
 <div class="row">
-    <div class="col-lg-5 col-md-8 col-sm-12 col-xs-15">
+    <div class="clr-col-8">
         <div class="card">
             <div class="card-header">
-                SCRIPT: ##Filename##
+                SCRIPT: ##Filename## ID: ##_id##
             </div>
             <div class="card-block">
                 <span class="x-lprjwdg-actionws" id="wdgActionWSScriptExecSingle##_id##">
@@ -10,17 +10,23 @@
                     <span class="x-lprjelm x-lprjvar-ActionWsState x-lprjws x-wdgTarget-ConditionState##_id## x-lprjAuth x-lprjForceUpdate">/api/scriptexecutions/##_id##</span>
                 </span>
                 <span class="x-lprjwdg-actionobj" id="wdgActionsWSScript##_id##">
-                    <span class="x-lprjelm x-lprjvar-LaunchWSLaunch">wdgLabelStateScript##_id##.setLabel("Starting...")|wdgLabelStateScript##_id##.setStatus("warning")|wdgActionWSScriptExecSingle##_id##.fireAction("ActionWsLaunch")</span>
-                    <span class="x-lprjelm x-lprjvar-LaunchWSLaunched">wdgLabelStateScript##_id##.setLabel("Running...")|wdgLabelStateScript##_id##.setStatus("warning")|wdgActionWSScriptExecSingle##_id##.fireAction("ActionWsState")</span>
+                    <span class="x-lprjelm x-lprjvar-LaunchWSLaunch">wdgLabelStateScript##_id##.setLabel("Starting...")|wdgLabelStateScript##_id##.setStatus("warning")|wdgActionWSScriptExecSingle##_id##.fireAction("ActionWsLaunch")|areaDiagramState.opendiv(0)</span>
+                    <span class="x-lprjelm x-lprjvar-LaunchWSLaunched">wdgLabelStateScript##_id##.setLabel("Running...")|wdgLabelStateScript##_id##.setStatus("warning")|wdgActionWSScriptExecSingle##_id##.fireAction("ActionWsState")|areaDiagramState.opendiv(1)</span>
                 </span>     
                 <span class="x-lprjwdg-actionobj" id="wdgActionsShowResults##_id##">
                     <span class="x-lprjelm x-lprjvar-OpenResults">ResultId.setVar("##_id##")|area1.opendiv(2)</span>
                 </span>               
                 <span class="x-lprjwdg-conditionobj" id="ConditionState##_id##">
                     <span class="x-lprjelm x-lprjvar-check">State == "End"</span>
-                    <span class="x-lprjelm x-lprjvar-then">wdgLabelStateScript##_id##.setLabel("End")|wdgLabelStateScript##_id##.setStatus("success")</span>
+                    <span class="x-lprjelm x-lprjvar-then">ConditionStateError##_id##.fireAction(oApplication.oWidgets.ConditionState##_id##.oData)</span>
                     <span class="x-lprjelm x-lprjvar-else">wdgLabelStateScript##_id##.setLabel("Running Again...")|wdgLabelStateScript##_id##.setStatus("warning")|sleep(20000)|wdgActionWSScriptExecSingle##_id##.fireAction("ActionWsState")</span>
                 </span>
+                <span class="x-lprjwdg-conditionobj" id="ConditionStateError##_id##">
+                    <span class="x-lprjelm x-lprjvar-check">HasResults == "Error"</span>
+                    <span class="x-lprjelm x-lprjvar-then">wdgLabelStateScript##_id##.setLabel("Error")|wdgLabelStateScript##_id##.setStatus("danger")|ResultId.setVar("##_id##")|areaDiagramState.opendiv(2)</span>
+                    <span class="x-lprjelm x-lprjvar-else">wdgLabelStateScript##_id##.setLabel("End")|wdgLabelStateScript##_id##.setStatus("success")|areaDiagramState.opendiv(3)|areaDiagramState.opendiv(3)</span>
+                </span>
+
                 <div class="card-text">
                     Result Type: ##ResultType##<br>
                     State: 
@@ -36,8 +42,7 @@
                         <span class="x-lprjelm x-lprjvar-status">success</span>
                     </span>
                     {{end}}
-                    <br>
-                    Results: ##HasResults##
+                    
                 </div>
             </div>
             <div class="card-footer">
@@ -46,7 +51,7 @@
                 <button class="x-lprjwdg-button x-lprjvar-action-wdgActionsShowResults##_id##_OpenResults btn btn-sm btn-link" id="mnuData##_id##">View Data</button>
                 {{end}}
                 {{HasResults=="Error"}}
-                <button class="btn btn-sm btn-link">View Errors</button>
+                <button class="x-lprjwdg-button x-lprjvar-action-wdgActionsShowResults##_id##_OpenResults btn btn-sm btn-link" id="mnuError##_id##">View Errors</button>
                 {{end}}
 
             </div>

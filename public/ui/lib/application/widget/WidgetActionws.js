@@ -52,6 +52,8 @@ var Application_WidgetActionws = Object.extend(Application_Widget, {
 	 */
 	constructor: function(oElement, oApplication){
 		this.oTimer = null;
+		this.oAction = [];
+		this.aActions = {};
 		
 		this.oElement = oElement;
 		this.oApplication = oApplication;
