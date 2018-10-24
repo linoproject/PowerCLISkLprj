@@ -192,27 +192,52 @@ app['get'](properties.api + '/scriptexecutions/launch/:id', function(req, res){
 					}
 					
 					if (sData != ""){
-						// Finally store data
-						var oData = JSON.parse(sData);
-						
-						var oResData = JSON.parse(oExecutionData.ResultType);
-					
-						if (oResData.type == "list"){
-							for (var i=0; i < oData.length; i++){
-								
-								
-								DbUtils.insertResultsFromScript(oExecutionData._id, oResData.name, JSON.stringify(oData[i]),function(){
+						try {
+							// Finally store data
+							var oData = JSON.parse(sData);
+							var oResData = JSON.parse(oExecutionData.ResultType);
+
+							if (oResData.type == "list") {
+								for (var i = 0; i < oData.length; i++) {
+
+
+									DbUtils.insertResultsFromScript(oExecutionData._id, oResData.name, JSON.stringify(oData[i]), function () {
+										// Done
+									});
+
+								}
+							} else if (oResData.type == "single") {
+
+								DbUtils.insertResultsFromScript(oExecutionData._id, oResData.name, JSON.stringify(oData), function () {
 									// Done
 								});
-								
+
 							}
-						}else if (oResData.type == "single"){
-							
-							DbUtils.insertResultsFromScript(oExecutionData._id, oResData.name, JSON.stringify(oData),function(){
-								// Done
+						}catch(e){
+							// Write error into results 
+							oExecutionData.HasResults = "Error";
+							var oResultErr = {
+								Name: 'error',
+								Value: e.toString(),
+								//EXTERNAL RELATIONS
+								ScriptExecution: oExecutionData._id
+							};
+							var oErr = db_PowerCLILaunch_db.Result(oResultErr);
+							oErr.save(function (err) {
+								if (err) {
+									console.log(err);
+								}
+								db_PowerCLILaunch_db.ScriptExecution.findByIdAndUpdate(oExecutionData._id, oExecutionData, { 'new': true }, function (err, obj) {
+									if (err) {
+										console.log(err);
+									}
+								});
+
 							});
-							
 						}
+							
+					
+						
 					}
 				});
 				
